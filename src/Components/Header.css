@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  background-color: steelblue;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+}
+
+.header-title {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: whitesmoke;
+}
+
+.profile-logo {
+  font-size: 24px;
+  background-color: yellowgreen;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border: none;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+}
