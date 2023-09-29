@@ -37,3 +37,9 @@
 .product-button:hover {
   background-color: #0056b3;
 }
+
+.product-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./Header.css";
 
@@ -29,12 +30,16 @@ function Header() {
   //console.log(initials);
 
   return (
-    <div className="header">
+    <header className="header">
       <div className="column">
-        <FaCartShopping color="white" size={50} />
+        <Link to='/cart'>
+          <FaCartShopping color="white" size={50} />
+        </Link>
       </div>
       <div className="column">
-        <h1 className="header-title">Carrito de Compras</h1>
+        <Link to="/">
+          <h1 className="header-title">Carrito de Compras</h1>
+        </Link>
       </div>
       <div className="column">
         {user ? (
@@ -43,7 +48,7 @@ function Header() {
           <button className="profile">...</button>
         )}
       </div>
-    </div>
+    </header>
   )
 };
 

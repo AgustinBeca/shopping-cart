@@ -6,34 +6,16 @@ import Product from "./Product";
 
 function Products() {
 
-  /* const products = [
-    {
-      title: 'PS5',
-      price: '500',
-      description: "The last PlayStation Console",
-      image: "",
-      category: "electronic"
-    },
-    {
-      title: 'Xbox Series X',
-      price: '500',
-      description: "The last Xbox Console",
-      image: "",
-      category: "electronic"
-    },
-    {
-      title: 'Xbox Series S',
-      price: '300',
-      description: "The last Xbox Console",
-      image: "",
-      category: "electronic"
-    },
-    
-  ]; */
-
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  //TRAER SOLO 6 PRODUCTOS
+  /* useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((data) => {
@@ -43,11 +25,11 @@ function Products() {
         }
         setProducts(newData);
       });
-  }, []);
+  }, []); */
 
   //console.log(products);
 
-  function getAllProducts() {
+  /* function getAllProducts() {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((data) => setProducts(data));
@@ -63,7 +45,7 @@ function Products() {
         }
         setProducts(newData);
       });
-  };
+  }; */
 
   return (
     <div>
@@ -73,17 +55,18 @@ function Products() {
             {products.map((product) => (
               <Product
                 key={product.id}
+                id={product.id}
                 title={product.title}
                 image={product.image}
                 price={product.price}
               />
             ))}
           </div>
-          {products.length === 6 ?
+          {/* {products.length === 6 ?
             <button className="see-all-button" onClick={getAllProducts}>Ver Todos</button>
             :
             <button className="see-all-button" onClick={seeLessProducts}>Ver Menos</button>
-          }
+          } */}
         </>
 
       ) : (

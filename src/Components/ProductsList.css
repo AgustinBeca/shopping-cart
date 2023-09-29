@@ -1,0 +1,32 @@
+.cart-title{
+  text-align: center;
+}
+
+.products-cart {
+  max-width: 50rem;
+  margin: 2rem auto;
+  padding: 1rem;
+  table-layout: fixed;
+  border-spacing: 1rem;
+  text-align: center;
+}
+
+.products-cart thead {
+  font-size: 1rem;
+  color: steelblue;
+}
+
+.products-cart tbody {
+  font-size: 0.85rem;
+  color:black;
+}
+
+.products-cart-image img {
+  width: 100px;
+  height: 100px;
+}
+
+.products-cart-total{
+  text-align: center;
+  color: chocolate;
+}

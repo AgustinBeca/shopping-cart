@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./Product.css"
 
@@ -8,7 +9,9 @@ function Product(props) {
       <img src={props.image} alt="Imagen"></img>
       <h3 className="product-title">{props.title}</h3>
       <p className="product-price">${props.price}</p>
-      <button className="product-button">Agregar</button>
+      <Link to={`/products/${props.id}`}>
+      <button className="product-button">Detalle</button>
+      </Link>
     </div>
   )
 };
