@@ -4,15 +4,24 @@ import "./Products.css";
 
 import Product from "./Product";
 
-function Products() {
+function Products(props) {
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState();
+  let filteredProducts = [];
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((data) => setProducts(data));
   }, []);
+
+  if (props.category === "all") {
+    filteredProducts = products;
+  } else {
+    filteredProducts = products.filter(product => product.category === props.category);
+  }
+
+  //console.log(filteredProducts);
 
   //TRAER SOLO 6 PRODUCTOS
   /* useEffect(() => {
@@ -52,13 +61,14 @@ function Products() {
       {products ? (
         <>
           <div className="products-list">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <Product
                 key={product.id}
                 id={product.id}
                 title={product.title}
                 image={product.image}
                 price={product.price}
+                category={product.category}
               />
             ))}
           </div>

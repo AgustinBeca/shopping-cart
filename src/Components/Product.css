@@ -18,6 +18,11 @@
   color: black;
 }
 
+.product-category {
+  color: #0056b3;
+  font-weight: bold;
+}
+
 .product-price {
   color: olive;
 }

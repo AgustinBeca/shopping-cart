@@ -8,6 +8,7 @@ function Product(props) {
     <div className="product-card">
       <img src={props.image} alt="Imagen"></img>
       <h3 className="product-title">{props.title}</h3>
+      <p className="product-category">{props.category}</p>
       <p className="product-price">${props.price}</p>
       <Link to={`/products/${props.id}`}>
       <button className="product-button">Detalle</button>

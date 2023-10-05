@@ -1,0 +1,17 @@
+.products-filter {
+  color: black;
+  padding: 0 1rem;
+  margin: 1rem 0;
+}
+
+.products-filter label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.products-filter select {
+  font: inherit;
+  padding: 0.5rem 3rem;
+  font-weight: bold;
+  border-radius: 6px;
+}

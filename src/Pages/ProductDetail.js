@@ -18,10 +18,7 @@ function ProductDetail() {
     setProducts(storedProducts);
   }, []);
 
-  //localStorage.removeItem('products');
-
   function addProduct() {
-
     //console.log(product);
 
     const updatedProducts = [...products, product];
@@ -30,6 +27,7 @@ function ProductDetail() {
     //console.log(updatedProducts);
 
     localStorage.setItem('products', JSON.stringify(updatedProducts));
+    console.log("Producto Añadido correctamente!");
     //console.log("Local:");
     //console.log(localStorage.getItem('products'));
   };
@@ -43,6 +41,7 @@ function ProductDetail() {
           </div>
           <div className="product-card">
             <h3 className="product-title">{product.title}</h3>
+            <p className="product-category">{product.category}</p>
             <p>{product.description}</p>
             <p className="product-price">${product.price}</p>
             <Link to='/'>

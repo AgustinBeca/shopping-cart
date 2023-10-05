@@ -1,4 +1,4 @@
-.cart-title{
+.cart-title {
   text-align: center;
 }
 
@@ -18,7 +18,7 @@
 
 .products-cart tbody {
   font-size: 0.85rem;
-  color:black;
+  color: black;
 }
 
 .products-cart-image img {
@@ -26,7 +26,13 @@
   height: 100px;
 }
 
-.products-cart-total{
+.products-cart-total {
   text-align: center;
   color: chocolate;
+}
+
+.empty-cart {
+  text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: goldenrod;
 }

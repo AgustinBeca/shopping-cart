@@ -11,12 +11,12 @@ function ProductsList() {
     setProducts(storedProducts);
   }, []);
 
-  //console.log(products);
+  //console.log(products.length);
 
   let total = 0;
 
-  if (products.length > 0) {
-    products.forEach((products)=>{
+  if (products) {
+    products.forEach((products) => {
       const subtotal = products.price * products.rating.count;
       total += subtotal;
     });
@@ -24,33 +24,39 @@ function ProductsList() {
   }
 
   return (
-    <div>
-      <h2 className="cart-title">Estos fueron los productos escogidos</h2>
-      <table className="products-cart">
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td className="products-cart-image"><img src={product.image} alt="Imagen" /></td>
-              <td className="products-cart-name">{product.title}</td>
-              <td className="products-cart-price">${product.price}</td>
-              <td className="products-cart-count">{product.rating.count}</td>
-              <td className="products-cart-subtotal">${product.price * product.rating.count}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <>
+      {products.length > 0 ? (
+        <>
+          <h2 className="cart-title">Estos fueron los productos escogidos</h2>
+          <table className="products-cart">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map((product) => (
+                <tr key={product.id}>
+                  <td className="products-cart-image"><img src={product.image} alt="Imagen" /></td>
+                  <td className="products-cart-name">{product.title}</td>
+                  <td className="products-cart-price">${product.price}</td>
+                  <td className="products-cart-count">{product.rating.count}</td>
+                  <td className="products-cart-subtotal">${product.price * product.rating.count}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <h2 className="products-cart-total">Total: ${total}</h2>
+        </>
+      ) : (
+        <h2 className="empty-cart">Carrito de Compras Vacío</h2>
+      )}
 
-      <h2 className="products-cart-total">Total: ${total}</h2>
-    </div>
+    </>
   )
 };
 
