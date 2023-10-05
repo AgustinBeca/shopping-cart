@@ -1,7 +1,5 @@
-# Agustin Beltran Casas
+# Agustin Beltran Casas - 0000201162
 
-## 0000201162
+Proyecto Carrito de Compras
 
-### Proyecto Carrito de Compras
-
-#### Desarrollo Web con ReactJS
+Desarrollo Web con ReactJS
