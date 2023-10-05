@@ -11,7 +11,7 @@ function ProductsFilter(props) {
   return (
     <div className="products-filter">
       <select value={props.selected} onChange={dropDownChangeHandler}>
-        <option value="all">Todos</option>
+        <option value="all">All</option>
         <option value="men's clothing">Men's clothing</option>
         <option value="jewelery">Jewelery</option>
         <option value="electronics">Electronics</option>

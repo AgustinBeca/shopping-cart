@@ -1,18 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { /* useState, */ useEffect, useReducer } from "react";
 
 import "./Products.css";
 
 import Product from "./Product";
 
+import { actions, initalState, productReducer } from "../Helpers/reducer";
+
 function Products(props) {
 
-  const [products, setProducts] = useState();
+  /* const [products, setProducts] = useState(); */
   let filteredProducts = [];
+
+  const [state, dispatch] = useReducer(productReducer, initalState);
+  const { products, error } = state;
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
-      .then((data) => setProducts(data));
+      .then((data) =>
+        dispatch({ type: actions.FETCH_PRODUCT_SUCCESS, payload: data })
+      ).catch((e) =>
+        dispatch({ type: actions.FETCH_PRODUCT_FAIL, payload: e.message })
+      );
   }, []);
 
   if (props.category === "all") {
@@ -57,7 +66,8 @@ function Products(props) {
   }; */
 
   return (
-    <div>
+    <>
+      {error && <div>{error}</div>}
       {products ? (
         <>
           <div className="products-list">
@@ -82,7 +92,7 @@ function Products(props) {
       ) : (
         <h1 className="loading-message">Cargando Productos...</h1>
       )}
-    </div>
+    </>
   )
 };
 
