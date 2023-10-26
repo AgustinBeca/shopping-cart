@@ -38,7 +38,7 @@ function Header() {
       </div>
       <div className="column">
         <Link to="/">
-          <h1 className="header-title">Carrito de Compras</h1>
+          <h1 className="header-title">Listado de Productos</h1>
         </Link>
       </div>
       <div className="column">

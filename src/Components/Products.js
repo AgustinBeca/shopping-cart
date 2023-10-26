@@ -1,18 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { /* useState, */ useEffect, useReducer } from "react";
 
 import "./Products.css";
 
 import Product from "./Product";
 
-function Products() {
+import { actions, initalState, productReducer } from "../Helpers/reducer";
 
-  const [products, setProducts] = useState([]);
+function Products(props) {
+
+  /* const [products, setProducts] = useState(); */
+  let filteredProducts = [];
+
+  const [state, dispatch] = useReducer(productReducer, initalState);
+  const { products, error } = state;
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
-      .then((data) => setProducts(data));
+      .then((data) =>
+        dispatch({ type: actions.FETCH_PRODUCT_SUCCESS, payload: data })
+      ).catch((e) =>
+        dispatch({ type: actions.FETCH_PRODUCT_FAIL, payload: e.message })
+      );
   }, []);
+
+  if (props.category === "all") {
+    filteredProducts = products;
+  } else {
+    filteredProducts = products.filter(product => product.category === props.category);
+  }
+
+  //console.log(filteredProducts);
 
   //TRAER SOLO 6 PRODUCTOS
   /* useEffect(() => {
@@ -48,17 +66,19 @@ function Products() {
   }; */
 
   return (
-    <div>
+    <>
+      {error && <div>{error}</div>}
       {products ? (
         <>
           <div className="products-list">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <Product
                 key={product.id}
                 id={product.id}
                 title={product.title}
                 image={product.image}
                 price={product.price}
+                category={product.category}
               />
             ))}
           </div>
@@ -72,7 +92,7 @@ function Products() {
       ) : (
         <h1 className="loading-message">Cargando Productos...</h1>
       )}
-    </div>
+    </>
   )
 };
 
