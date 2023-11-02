@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import "./ProductsList.css"
+import "./ProductsList.css";
 
 function ProductsList() {
-
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+    const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
     setProducts(storedProducts);
   }, []);
 
@@ -25,9 +24,9 @@ function ProductsList() {
 
   return (
     <>
+      <h2 className="cart-title">Estos fueron los productos escogidos</h2>
       {products.length > 0 ? (
         <>
-          <h2 className="cart-title">Estos fueron los productos escogidos</h2>
           <table className="products-cart">
             <thead>
               <tr>
@@ -41,11 +40,17 @@ function ProductsList() {
             <tbody>
               {products.map((product) => (
                 <tr key={product.id}>
-                  <td className="products-cart-image"><img src={product.image} alt="Imagen" /></td>
+                  <td className="products-cart-image">
+                    <img src={product.image} alt="Imagen" />
+                  </td>
                   <td className="products-cart-name">{product.title}</td>
                   <td className="products-cart-price">${product.price}</td>
-                  <td className="products-cart-count">{product.rating.count}</td>
-                  <td className="products-cart-subtotal">${product.price * product.rating.count}</td>
+                  <td className="products-cart-count">
+                    {product.rating.count}
+                  </td>
+                  <td className="products-cart-subtotal">
+                    ${product.price * product.rating.count}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -55,9 +60,8 @@ function ProductsList() {
       ) : (
         <h2 className="empty-cart">Carrito de Compras Vacío</h2>
       )}
-
     </>
-  )
-};
+  );
+}
 
 export default ProductsList;
