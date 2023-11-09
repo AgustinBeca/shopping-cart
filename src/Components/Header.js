@@ -33,7 +33,7 @@ function Header() {
     <header className="header">
       <div className="column">
         <Link to='/cart'>
-          <FaCartShopping color="white" size={50} />
+          <FaCartShopping class="icon" color="white" size={50} />
         </Link>
       </div>
       <div className="column">
